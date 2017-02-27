@@ -40,6 +40,8 @@
                 
                 <?php if (!empty($_SESSION["id"])): ?>
                     <p style="text-align:right; margin-right:50px;"><a href="password.php">Change Password</a></p>
+                    <p style="text-align:right; margin-right:50px;"><a href="sell.php">Want to sell item</a></p>
+
                     <ul class="nav nav-pills">
                         <li><a href="quote.php">Books</a></li>
                         <li><a href="buy.php">Clothing</a></li>
