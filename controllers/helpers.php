@@ -69,10 +69,10 @@
         {
             if(!empty($_SESSION["id"]))
             {
-                $link = mysqli_connect("localhost", 'username', 'password', 'store');
-                $query = sprintf("SELECT username FROM users WHERE id = '%s'", $_SESSION["id"]);
+                $link = mysqli_connect("localhost", 'adarsh_jain', 'v1kCjsvLYytrBTGV', 'store');
+                $query = sprintf("SELECT first_name FROM users WHERE id = '%s'", $_SESSION["id"]);
                 $user = mysqli_query($link, $query);
-                $user_name = mysqli_fetch_array($user)["username"];
+                $user_name = mysqli_fetch_array($user)["first_name"];
             }
             
             // extract variables into local scope

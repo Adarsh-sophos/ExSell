@@ -17,8 +17,10 @@
     require("helpers.php");
 
     //connecting to database
-    $link = mysqli_connect("localhost", 'username', 'password', 'store');
-
+    $link = mysqli_connect("localhost", 'adarsh_jain', 'v1kCjsvLYytrBTGV', 'store');
+    
+    $colleges = array('Select College','MNIT Jaipur','IIT Hyderabad',"IIT Bombay","IIT Delhi");
+    
     // enable sessions
     session_start();
 

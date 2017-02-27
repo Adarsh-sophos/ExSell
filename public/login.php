@@ -14,7 +14,7 @@
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // validate submission
-        if (empty($_POST["username"]))
+        if (empty($_POST["email"]))
         {
             apologize("You must provide your username.");
         }
@@ -24,7 +24,7 @@
         }
 
         // query database for user
-        $query = sprintf("SELECT * FROM users WHERE username = '%s'", $_POST["username"]);
+        $query = sprintf("SELECT * FROM users WHERE email = '%s'", $_POST["email"]);
         $rows = mysqli_query($link, $query);
 
         // if we found user, check password

@@ -32,6 +32,10 @@
             <div id="top">
                 <div>
                     <a href="/"><img alt="Amazon" src="/img/logo.png"/></a>
+                    <p style="text-align:right; margin-right:50px;">
+                        <a href="sell.php">Want to sell item</a>&nbsp;&nbsp;
+                        <a href="password.php">  Change Password</a>
+                    </p>
                 </div>
                 
                 <?php if (!empty($_SESSION["id"])): ?>
@@ -39,8 +43,7 @@
                 <?php endif ?>
                 
                 <?php if (!empty($_SESSION["id"])): ?>
-                    <p style="text-align:right; margin-right:50px;"><a href="password.php">Change Password</a></p>
-                    <p style="text-align:right; margin-right:50px;"><a href="sell.php">Want to sell item</a></p>
+                    
 
                     <ul class="nav nav-pills">
                         <li><a href="quote.php">Books</a></li>

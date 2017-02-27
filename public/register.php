@@ -7,16 +7,24 @@
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
         // else render form
-        render("register_form.php", ["title" => "Register"]);
+        render("register_form.php", ["title" => "Register", "colleges" => $colleges]);
     }
 
     // else if user reached page via POST (as by submitting a form via POST)
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // validate submission
-        if (empty($_POST["username"]))
+        if (empty($_POST["first_name"]))
         {
-            apologize("You must provide your username.");
+            apologize("You must provide your first name.");
+        }
+        if (empty($_POST["last_name"]))
+        {
+            apologize("You must provide your last name.");
+        }
+        if (empty($_POST["email"]))
+        {
+            apologize("You must provide your email.");
         }
         else if (empty($_POST["password"]))
         {
@@ -31,12 +39,20 @@
             apologize("Password doesn't match.");
         }
         
-        $query = sprintf("INSERT IGNORE INTO users (username, hash) VALUES ('%s', '%s')", $_POST["username"], password_hash($_POST["password"],PASSWORD_DEFAULT));
+        $selected_key = $_POST['college'];
+        $selected_college = $colleges[$selected_key];
+
+        if($_POST["choice"] == 'M')
+            $choice = 'M';
+        else
+            $choice = 'F';
+        
+        $query = sprintf("INSERT IGNORE INTO users (first_name,last_name,email,hash,college,gender) VALUES ('%s','%s','%s','%s','%s','%s')", $_POST["first_name"], $_POST["last_name"],$_POST["email"], password_hash($_POST["password"],PASSWORD_DEFAULT), $selected_college, $choice);
         $check = mysqli_query($link, $query);
         
         if ($check == 0)
         {
-            apologize("Username already exists");
+            apologize("Email already exists");
         }
         else
         {

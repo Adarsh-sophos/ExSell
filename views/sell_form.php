@@ -26,10 +26,10 @@
         
         <div class="form-group"> 
             <div class="radio">
-              <label><input type="radio" name="choice" value="donate">I want to Donate</label>
+              <label><input type="radio" name="choice" value="D">I want to Donate</label>
             </div>
             <div class="radio">
-              <label><input type="radio" name="choice" value="sell">I want to Sell</label>
+              <label><input type="radio" name="choice" value="S">I want to Sell</label>
             </div>
         </div>
         

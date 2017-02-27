@@ -32,50 +32,74 @@
         }
         
         
+        //getting file name
         $target_dir = "../images/";
         $target_file = $target_dir . basename($_FILES["item_image"]["name"]);
         $uploadOk = 1;
+        
+        //file extension
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         
         $check = getimagesize($_FILES["item_image"]["tmp_name"]);
         if($check !== false)
         {
-            echo "File is an image - " . $check["mime"] . ".";
+            echo "File is an image - " . $check["mime"] . ".</br>";
             $uploadOk = 1;
         } 
         else 
         {
-            echo "File is not an image.";
+            echo "File is not an image.</br>";
             $uploadOk = 0;
         }
         
+        //checking size of uploaded file
         if ($_FILES["item_image"]["size"] > 1000000)
         {
-            echo "Your file is too large(>1MB).";
+            echo "Your file is too large(>1MB).</br>";
             $uploadOk = 0;
         }
         
+        //checking extension of file
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
         {
-            echo "Only JPG, JPEG, PNG & GIF files are allowed.";
+            echo "Only JPG, JPEG, PNG & GIF files are allowed.</br>";
             $uploadOk = 0;
         }
         
+        //checking if file already exist
+        if (file_exists($target_file)) 
+            $target_file = $target_dir . str_replace('.'.$imageFileType, "", $_FILES["item_image"]["name"]) . '_' . $_SESSION["id"] . '.'. $imageFileType;
+        
+        //checking if there was an error
         if ($uploadOk == 0) 
             echo "Your file was not uploaded.";
         else
         {
             if (move_uploaded_file($_FILES["item_image"]["tmp_name"], $target_file))
-                echo "The file ". basename( $_FILES["item_image"]["name"]). " has been uploaded.";
+                echo "The file ". basename( $_FILES["item_image"]["name"]). " has been uploaded.</br>";
             else 
-                echo "There was an error uploading your file.";
+                echo "There was an error uploading your file.</br>";
         }
         
-        $select = $_POST['category'];
+        $values = array('Select Category','Books','Clothing','Electronics','Furniture','Sports','Vehicle','Others');
+        $selected_key = $_POST['category'];
+        $selected_category = $values[$selected_key];
         
-        //$insert_path = "INSERT INTO items VALUES('$folder','$upload_image')";
-
-        //$var=mysql_query($inser_path);
+        if($_POST["choice"] == 'donate')
+            $choice = 'donate';
+        else
+            $choice = 'sell';
+        
+        $query = sprintf("SELECT college FROM users WHERE id = '%s'",$_SESSION["id"]);
+        $result = mysqli_query($link, $query);
+        $college = mysqli_fetch_array($result)["college"];
+        
+        //insering information
+        $query = sprintf("INSERT INTO items (path,title,price,college,category,description,contact,choice,seller_id) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s')", $target_file, $_POST["title"], $_POST["price"], $college, $selected_category ,$_POST["description"], $_POST["contact"], $choice, $_SESSION["id"]);
+        $result = mysqli_query($link, $query);
+        
+        if($result === false)
+            print("Can not insert");
     }
 
 ?>
