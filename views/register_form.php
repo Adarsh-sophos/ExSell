@@ -31,7 +31,7 @@
         </div>
         
         <select name="college" onchange="chk(this.value)">
-            <option value="0" selected disabled>Select Category</option>
+            <option value="0" selected disabled>Select College</option>
             <?php
                 for($i=1; $i<sizeof($colleges); $i++)
                     printf('<option value="%d">%s</option>',$i, $colleges[$i]);

@@ -15,14 +15,14 @@
             "path" => $row["path"],
             "title" =>  $row["title"],
             "price" => number_format($row["price"], 2),
-            "college" => $row["college"],
+            "description" => $row["description"],
             "category" => $row["category"],
-            "date" => $row["date"],
+            "date" => $row["date"]
             ];
     }
 
     
     // rendestoreioStore
-    render("store.php", ["title" => "Store", "position" => $positions]);
+    render("dashboard.php", ["title" => "Dashboard", "position" => $positions]);
 
 ?>

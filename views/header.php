@@ -33,8 +33,11 @@
                 <div>
                     <a href="/"><img alt="Amazon" src="/img/logo.png"/></a>
                     <p style="text-align:right; margin-right:50px;">
-                        <a href="sell.php">Want to sell item</a>&nbsp;&nbsp;
-                        <a href="password.php">  Change Password</a>
+                        <a href="store.php">Go to Store</a>&nbsp;&nbsp;
+                        <?php if (!empty($_SESSION["id"])): ?>
+                            <a href="sell.php">Want to sell item</a>&nbsp;&nbsp;
+                            <a href="password.php">  Change Password</a>
+                        <?php endif ?>
                     </p>
                 </div>
                 

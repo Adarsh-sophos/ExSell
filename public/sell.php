@@ -33,7 +33,7 @@
         
         
         //getting file name
-        $target_dir = "../images/";
+        $target_dir = "images/";
         $target_file = $target_dir . basename($_FILES["item_image"]["name"]);
         $uploadOk = 1;
         
@@ -43,26 +43,26 @@
         $check = getimagesize($_FILES["item_image"]["tmp_name"]);
         if($check !== false)
         {
-            echo "File is an image - " . $check["mime"] . ".</br>";
+            //echo "File is an image - " . $check["mime"] . ".</br>";
             $uploadOk = 1;
         } 
         else 
         {
-            echo "File is not an image.</br>";
+            apologize("File is not an image.");
             $uploadOk = 0;
         }
         
         //checking size of uploaded file
         if ($_FILES["item_image"]["size"] > 1000000)
         {
-            echo "Your file is too large(>1MB).</br>";
+            apologize("Your file is too large(>1MB).");
             $uploadOk = 0;
         }
         
         //checking extension of file
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
         {
-            echo "Only JPG, JPEG, PNG & GIF files are allowed.</br>";
+            apologize("Only JPG, JPEG, PNG & GIF files are allowed.</br>");
             $uploadOk = 0;
         }
         
@@ -72,16 +72,16 @@
         
         //checking if there was an error
         if ($uploadOk == 0) 
-            echo "Your file was not uploaded.";
+            apologize("Your file was not uploaded.");
         else
         {
-            if (move_uploaded_file($_FILES["item_image"]["tmp_name"], $target_file))
-                echo "The file ". basename( $_FILES["item_image"]["name"]). " has been uploaded.</br>";
-            else 
-                echo "There was an error uploading your file.</br>";
+            if (!move_uploaded_file($_FILES["item_image"]["tmp_name"], $target_file))
+                apologize("There was an error uploading your file.");
         }
         
+        
         $values = array('Select Category','Books','Clothing','Electronics','Furniture','Sports','Vehicle','Others');
+        
         $selected_key = $_POST['category'];
         $selected_category = $values[$selected_key];
         
@@ -99,7 +99,9 @@
         $result = mysqli_query($link, $query);
         
         if($result === false)
-            print("Can not insert");
+            apologize("Can not insert");
+        
+        redirect("/");
     }
 
 ?>
