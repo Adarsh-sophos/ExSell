@@ -1,33 +1,35 @@
 <?php
-
+    
     // configuration
     require("../controllers/config.php");
 
     // if user reached page via GET (as by clicking a link or via redirect)
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
-        $query = sprintf("SELECT * FROM items LIMIT 10");
+        $query = sprintf("SELECT * FROM items WHERE id='%s'", $_SERVER['QUERY_STRING']);
         $rows = mysqli_query($link, $query);
   
         if(mysqli_num_rows($rows) == 0)
-            apologize("Nothing to show");
+            apologize("There was an error.</br> Try Again !!");
     
-        while($row = mysqli_fetch_array($rows))
-        {
-            $positions[] = [
-                "id" => $row["id"],
-                "path" => $row["path"],
-                "title" =>  $row["title"],
-                "price" => number_format($row["price"], 2),
-                "college" => $row["college"],
-                "category" => $row["category"],
-                "date" => $row["date"],
-                ];
-        }
-
-    
+        $row = mysqli_fetch_array($rows);
+        
+        $positions = [
+            "path" => $row["path"],
+            "title" =>  $row["title"],
+            "price" => number_format($row["price"], 2),
+            "description" => $row["description"],
+            "category" => $row["category"],
+            "date" => $row["date"],
+            "contact" => $row["contact"]
+            ];
+        
+        $query = sprintf("SELECT first_name FROM users WHERE id='%s'", $row["seller_id"]);
+        $rows = mysqli_query($link, $query);
+        $name = mysqli_fetch_array($rows)["first_name"];
+        
         // rendestoreioStore
-        render("store.php", ["title" => "Store", "position" => $positions]);
+        render("item_form.php", ["title" => "Seller: ".$name , "position" => $positions]);
     }
 
     // else if user reached page via POST (as by submitting a form via POST)
@@ -84,4 +86,6 @@
         }
     }
 
+?>
+    
 ?>

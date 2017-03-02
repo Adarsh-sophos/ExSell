@@ -21,7 +21,7 @@
             print("<td>" . $positions["title"] . "</td>");
             print("<td>" . $positions["description"] . "</td>");
             print("<td>" . $positions["price"] . "</td>");
-            print("<td>" . $positions["date"] . "</td>");
+            print("<td>" . date_format(date_create($positions["date"]), "d M Y, h:i A") . "</td>");
             print("<td>" ."" . "</td>");
             print("</tr>");
         }

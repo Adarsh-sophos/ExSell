@@ -33,10 +33,10 @@
                 <div>
                     <a href="/"><img alt="Amazon" src="/img/logo.png"/></a>
                     <p style="text-align:right; margin-right:50px;">
-                        <a href="store.php">Go to Store</a>&nbsp;&nbsp;
+                        <a href="/store.php">Go to Store</a>&nbsp;&nbsp;
                         <?php if (!empty($_SESSION["id"])): ?>
-                            <a href="sell.php">Want to sell item</a>&nbsp;&nbsp;
-                            <a href="password.php">  Change Password</a>
+                            <a href="/sell.php">Want to sell item</a>&nbsp;&nbsp;
+                            <a href="/password.php">  Change Password</a>
                         <?php endif ?>
                     </p>
                 </div>
@@ -49,11 +49,11 @@
                     
 
                     <ul class="nav nav-pills">
-                        <li><a href="quote.php">Books</a></li>
-                        <li><a href="buy.php">Clothing</a></li>
-                        <li><a href="sell.php">Electronics</a></li>
-                        <li><a href="history.php">Sports</a></li>
-                        <li><a href="logout.php"><strong>Log Out</strong></a></li>
+                        <li><a href="/#">Books</a></li>
+                        <li><a href="/#">Clothing</a></li>
+                        <li><a href="/#">Electronics</a></li>
+                        <li><a href="/#">Sports</a></li>
+                        <li><a href="/#"><strong>Log Out</strong></a></li>
                     </ul>
                 <?php endif ?>
             </div>

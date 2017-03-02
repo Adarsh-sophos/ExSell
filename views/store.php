@@ -6,7 +6,8 @@
             <th style="text-align:center;">Price</th>
             <th style="text-align:center;">College</th>
             <th style="text-align:center;">Category</th>
-            <th style="text-align:center;">Date</th>
+            <th style="text-align:center;">Date & Time</th>
+            <th style="text-align:center;">Contact Seller</th>
         </tr>
     </thead>
     <tbody>
@@ -22,7 +23,8 @@
             print("<td>" . $positions["price"] . "</td>");
             print("<td>" . $positions["college"] . "</td>");
             print("<td>" . $positions["category"] . "</td>");
-            print("<td>" . $positions["date"] . "</td>");
+            print("<td>" . date_format(date_create($positions["date"]), "d M Y, h:i A") . "</td>");
+            print('<td><a href = "item.php?'. $positions["id"] .'">Contact Seller</a></td>');
             print("</tr>");
         }
 
