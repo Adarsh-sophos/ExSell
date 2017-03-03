@@ -1,3 +1,23 @@
+<form action="store.php" method="post">
+    <fieldset>
+        <select name="college" onchange="chk(this.value)">
+            <option value="-1" selected disabled>Select College</option>
+            <option value="0">All</option>
+            <?php
+                for($i=1; $i<sizeof($colleges); $i++)
+                    printf('<option value="%d">%s</option>',$i, $colleges[$i]);
+            ?>
+        </select></br></br>
+        
+        <div class="form-group">
+            <button class="btn btn-default" type="submit">
+                <span aria-hidden="true" class="glyphicon glyphicon-log-in"></span>
+                Submit
+            </button>
+        </div>
+    </fieldset>
+</form>
+
 <table class="table table-striped">
     <thead>
         <tr>

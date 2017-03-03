@@ -26,3 +26,10 @@
     </tbody>
 
 </table>
+
+<div>
+    <a href="store.php?"></a>
+    <?php
+        print('<td><a href = "store.php?'. $position["id"] .'">View other items from this seller.</a></td>');
+    ?>
+</div>

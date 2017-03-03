@@ -21,7 +21,8 @@
             "description" => $row["description"],
             "category" => $row["category"],
             "date" => $row["date"],
-            "contact" => $row["contact"]
+            "contact" => $row["contact"],
+            "id" => $row["seller_id"]
             ];
         
         $query = sprintf("SELECT first_name FROM users WHERE id='%s'", $row["seller_id"]);
