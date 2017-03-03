@@ -75,6 +75,9 @@
                 $user_name = mysqli_fetch_array($user)["first_name"];
             }
             
+            //items of different categories
+            $category = array('Select Category', 'All', 'Books', 'Clothing', 'Electronics', 'Furniture', 'Sports', 'Vehicle', 'Others');
+            
             // extract variables into local scope
             extract($values);
 

@@ -3,13 +3,10 @@
         
         <select name="category" onchange="chk(this.value)">
             <option value="0" selected disabled>Select Category</option>
-            <option value="1">Books</option>
-            <option value="2">Clothing</option>
-            <option value="3">Electronics</option>
-            <option value="4">Furniture</option>
-            <option value="5">Sports</option>
-            <option value="6">Vehicle</option>
-            <option value="7">Others</option>
+            <?php
+                for($i=2; $i<sizeof($category); $i++)
+                    printf('<option value="%d">%s</option>',$i, $category[$i]);
+            ?>
         </select></br></br>
         
         <div class="form-group">
@@ -48,6 +45,3 @@
         </div>
     </fieldset>
 </form>
-<div>
-    or <a href="login.php">Log in</a>
-</div>

@@ -7,7 +7,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
         // else render form
-        render("sell_form.php", ["title" => "Sell item"]);
+        render("sell_form.php", ["title" => "Sell item", "category" => $category]);
     }
 
     // else if user reached page via POST (as by submitting a form via POST)
@@ -80,10 +80,9 @@
         }
         
         
-        $values = array('Select Category','Books','Clothing','Electronics','Furniture','Sports','Vehicle','Others');
         
         $selected_key = $_POST['category'];
-        $selected_category = $values[$selected_key];
+        $selected_category = $category[$selected_key];
         
         if($_POST["choice"] == 'donate')
             $choice = 'donate';

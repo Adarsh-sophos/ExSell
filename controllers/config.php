@@ -22,6 +22,7 @@
     $link = mysqli_connect("localhost", 'adarsh_jain', 'v1kCjsvLYytrBTGV', 'store');
     
     $colleges = array('Select College','MNIT Jaipur','IIT Hyderabad',"IIT Bombay","IIT Delhi","IIT Kharagpur","IIT Kanpur","IIT Madras","IIT Guwahati","IIT Roorkee","IIT (BHU) Varanasi","IIT (ISM) Dhanbad");
+    $category = array('Select Category', 'All', 'Books', 'Clothing', 'Electronics', 'Furniture', 'Sports', 'Vehicle', 'Others');
     
     // enable sessions
     session_start();

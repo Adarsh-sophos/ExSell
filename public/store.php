@@ -2,7 +2,7 @@
 
     // configuration
     require("../controllers/config.php");
-    
+
     // if user reached page via POST (as by submitting a form via POST)
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -18,7 +18,9 @@
     // if user reached page via GET (as by clicking a link or via redirect)
     else if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
-        if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING']))
+        if(!empty($_GET["category"]))
+            $query = sprintf("SELECT * FROM items WHERE category='%s'", $category[$_GET['category']]);
+        else if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING']))
             $query = sprintf("SELECT * FROM items WHERE seller_id='%s'", $_SERVER['QUERY_STRING']);
         else
             $query = sprintf("SELECT * FROM items LIMIT 10");
@@ -27,7 +29,7 @@
         $rows = mysqli_query($link, $query);
   
         if(mysqli_num_rows($rows) == 0)
-            apologize("Nothing to show");
+            apologize("You haven't put any item on sale yet.");
     
         while($row = mysqli_fetch_array($rows))
         {
@@ -41,9 +43,7 @@
                 "date" => $row["date"],
                 ];
         }
-
     
         // rendestoreioStore
         render("store.php", ["title" => "Store", "position" => $positions, "colleges" => $colleges]);
-    
 ?>

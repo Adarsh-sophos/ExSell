@@ -45,16 +45,22 @@
                     <h4>Welcome, <a href="/"><?= $user_name ?></a></h4>
                 <?php endif ?>
                 
-                <?php if (!empty($_SESSION["id"])): ?>
-                    
+                <?php if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php" || basename($_SERVER["SCRIPT_FILENAME"]) == "store.php")): ?>
 
                     <ul class="nav nav-pills">
-                        <li><a href="/#">Books</a></li>
-                        <li><a href="/#">Clothing</a></li>
-                        <li><a href="/#">Electronics</a></li>
-                        <li><a href="/#">Sports</a></li>
-                        <li><a href="/#"><strong>Log Out</strong></a></li>
+                        <?php
+                            if(basename($_SERVER["SCRIPT_FILENAME"]) == "index.php")
+                                $current = "";
+                            else
+                                $current = basename($_SERVER["SCRIPT_FILENAME"]);
+                            
+                            printf('<li><a href="/%s">%s</a></li>', $current, $category[1]);
+                            for($i=2; $i<sizeof($category); $i++)
+                                printf('<li><a href="/%s?category=%d">%s</a></li>', $current, $i, $category[$i]);
+                        ?>
+                        <li><a href="/logout.php"><strong>Log Out</strong></a></li>
                     </ul>
+                    
                 <?php endif ?>
             </div>
 
