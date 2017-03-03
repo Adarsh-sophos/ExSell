@@ -3,6 +3,15 @@
     // configuration
     require("../controllers/config.php");
     
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        $q = sprintf("DELETE FROM items WHERE id='%s'", $_POST["delete"]);
+        $r = mysqli_query($link, $q);
+        
+        if($r === false)
+            apologize("Can not remove item.");
+    }
+    
     if(!empty($_GET["category"]))
         $query = sprintf("SELECT * FROM items WHERE category='%s' AND seller_id='%s'", $category[$_GET['category']], $_SESSION["id"]);
     else
@@ -16,6 +25,7 @@
     while($row = mysqli_fetch_array($rows))
     {
         $positions[] = [
+            "id"  => $row["id"],
             "path" => $row["path"],
             "title" =>  $row["title"],
             "price" => number_format($row["price"], 2),

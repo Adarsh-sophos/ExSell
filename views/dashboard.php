@@ -22,7 +22,7 @@
             print("<td>" . $positions["description"] . "</td>");
             print("<td>" . $positions["price"] . "</td>");
             print("<td>" . date_format(date_create($positions["date"]), "d M Y, h:i A") . "</td>");
-            print("<td>" ."" . "</td>");
+            print('<td> <form action="/" method="post"> <fieldset><div class="form-group"><button class="btn btn-default" type="submit" name = "delete" value="'. $positions["id"] .'" title="'. $positions["title"] .'"> <span aria-hidden="true" class="glyphicon glyphicon-log-in"> </span>  Remove</button> </div> </td> </fieldset> </form>');
             print("</tr>");
         }
 
