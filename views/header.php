@@ -46,8 +46,9 @@
                 <?php endif ?>
                 
                 <?php if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php" || basename($_SERVER["SCRIPT_FILENAME"]) == "store.php")): ?>
-
-                    <ul class="nav nav-pills">
+                
+                <nav class="navbar navbar-inverse">
+                    <ul class="nav navbar-nav">
                         <?php
                             if(basename($_SERVER["SCRIPT_FILENAME"]) == "index.php")
                                 $current = "";
@@ -61,6 +62,11 @@
                         <li><a href="/logout.php"><strong>Log Out</strong></a></li>
                     </ul>
                     
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account&nbsp;&nbsp; </a></li>
+                    </ul>
+                </nav>
+                
                 <?php endif ?>
             </div>
 
