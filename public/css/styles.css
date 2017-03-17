@@ -1,47 +1,130 @@
-/**
- * styles.css
- *
- * Computer Science 50
- * Problem Set 7
- *
- * Global CSS.
- */
 
-.container
-{
-    /* center contents */
-    margin-left: auto;
-    margin-right: auto;
+body,html {
+    margin:0;
+    padding:0;
+    height:100%;
+    background-color:#f0f0f0;
+}
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+}
+
+.container {
+    width:85%;
+    margin:auto;
+    height:100%;
+}
+
+.sidenav {
+    position:fixed;
+    height:100%;
+    width:20%;
+    background-color:white;
+}
+
+.sidenav img {
+    width:100%;    
+}
+
+.content {
+    width:75%;
+    margin-left:25%;
+    
+}
+
+.hover-list {
+    list-style-type:none;
+    padding-left: 0px;
+}
+
+.hover-list li {
+    text-align:center;
+    display:block;
+    padding:5%;
+}
+
+.hover-list li:hover {
+    background-color:lightgrey;
+}
+
+a {
+    text-decoration:none;
+    color:inherit;
+}
+
+#welcome {
+    text-align:center;
+    padding:2% 1% 0;
+    margin:2% 1% 0;
+}
+
+.hz-list {
+    list-style-type:none;
+    padding-left: 0px;
+}
+
+.hz-list li {
     text-align: center;
-}
-
-#top
-{
-    /* surround with whitespace */
-    margin-bottom: 15px;
-    margin-top: 15px;
-}
-
-#top .nav
-{
-    /* center navigation pills */
     display: inline-block;
+    padding: 1% 2%;
 }
 
-#middle .form-control
-{
-    /* center form controls */
-    display: inline-block;
-
-    /* override Bootstrap's 100% width for form controls */
-    width: auto;
+.hz-list li:hover {
+    background-color:white;
 }
 
-#bottom
-{
-    /* shrink bottom's font size */
-    font-size: smaller;
+.select {
+    padding: 1% 2%;
+    margin: auto;
+    text-align: center;
+    background-color: grey;
+    font-size: medium;
+    color: white;
+}
 
-    /* surround with whitespace */
-    margin: 20px;
+.select option {
+    text-align:center;
+}
+
+p {
+    text-align:center;
+}
+
+.product {
+    width:30%;
+    margin:1%;
+    display:inline-block;
+    background-color:white;
+    
+}
+
+.product-list {
+    list-style-type:none;
+}
+
+.product-list li {
+    text-align: center;
+    padding:1%;
+}
+
+.title {
+    font-weight:bold;
+    
+}
+
+.product li img {
+    width:200px;
+    height:200px;
+}
+
+.product:hover {
+    background-color:#f9f9f9;
+    box-shadow: 0px 0px 42px 5px rgba(105,91,105,0.56);
+}
+
+.bottom {
+    padding:1px;
+}
+.bottom p {
+    text-align:center;
 }
