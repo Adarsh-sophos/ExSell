@@ -1,76 +1,69 @@
 <!DOCTYPE html>
-
 <html>
-
     <head>
-
-        <!-- http://getbootstrap.com/ -->
-        <link href="/css/bootstrap.min.css" rel="stylesheet"/>
-
         <link href="/css/styles.css" rel="stylesheet"/>
-
         <?php if (isset($title)): ?>
             <title><?= htmlspecialchars($title) ?></title>
         <?php else: ?>
-            <title>Amazon</title>
+            <title>ExSell</title>
         <?php endif ?>
-
-        <!-- https://jquery.com/ -->
-        <script src="/js/jquery-1.11.3.min.js"></script>
-
-        <!-- http://getbootstrap.com/ -->
-        <script src="/js/bootstrap.min.js"></script>
-
         <script src="/js/scripts.js"></script>
-
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     </head>
-
+    
+    
     <body>
-
         <div class="container">
-
-            <div id="top">
-                <div>
-                    <a href="/"><img alt="Amazon" src="/img/logo.png"/></a>
-                    <p style="text-align:right; margin-right:50px;">
-                        <a href="/store.php">Go to Store</a>&nbsp;&nbsp;
-                        <?php if (!empty($_SESSION["id"])): ?>
-                            <a href="/sell.php">Want to sell item</a>&nbsp;&nbsp;
-                            <a href="/password.php">  Change Password</a>
-                        <?php endif ?>
-                    </p>
-                </div>
-                
+            <div class="sidenav">
+                <a href="/"><img alt="Amazon" src="/img/logo.png"/></a>
                 <?php if (!empty($_SESSION["id"])): ?>
-                    <h4>Welcome, <a href="/"><?= $user_name ?></a></h4>
+                <ul class="hover-list">
+                    <a href="/store.php"><li>Go to Store&nbsp;&nbsp;</li></a>
+                    <a href="/sell.php"><li>Want to sell item&nbsp;&nbsp;</li></a>
+                    <a href="/password.php"><li>Change Password</li></a>
+                    <a href="/logout.php"><li>Log Out</li></a>
+                    <a href="#"><li> Your Account&nbsp;&nbsp; </li></a>
+                </ul>
                 <?php endif ?>
                 
-                <?php if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php" || basename($_SERVER["SCRIPT_FILENAME"]) == "store.php")): ?>
-                
-                <nav class="navbar navbar-inverse">
-                    <ul class="nav navbar-nav">
-                        <?php
-                            if(basename($_SERVER["SCRIPT_FILENAME"]) == "index.php")
-                                $current = "";
-                            else
-                                $current = basename($_SERVER["SCRIPT_FILENAME"]);
-                            
-                            printf('<li><a href="/%s">%s</a></li>', $current, $category[1]);
-                            for($i=2; $i<sizeof($category); $i++)
-                                printf('<li><a href="/%s?category=%d">%s</a></li>', $current, $i, $category[$i]);
-                        ?>
-                        
-                    </ul>
+            </div>
+            
+            <div class="content">
+    
+                <div class="top">
                     
                     <?php if (!empty($_SESSION["id"])): ?>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/#"><span class="glyphicon glyphicon-user"></span> Your Account (<?= $user_name ?>)</a></li>
-                        <li><a href="/logout.php"><span class="glyphicon glyphicon-log-out"></span><strong> Log Out&nbsp;&nbsp;</strong></a></li>
-                    </ul>
+                        <h2 id ="welcome">Welcome, <a href="/"><?= $user_name ?></a></h2>
                     <?php endif ?>
-                </nav>
+                    
+                    <?php if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php" || basename($_SERVER["SCRIPT_FILENAME"]) == "store.php")): ?>
+                    
+                        <p style="text-align:center;">
+                            <ul class="hz-list">
+                                <li>Filter: </li>
+                    
+                                <?php
+                                    if(basename($_SERVER["SCRIPT_FILENAME"]) == "index.php")
+                                        $current = "";
+                                    else
+                                        $current = basename($_SERVER["SCRIPT_FILENAME"]);
+                                
+                                    printf('<li><a href="/%s">%s</a></li>', $current, $category[1]);
+                                    
+                                    for($i=2; $i<sizeof($category); $i++)
+                                        printf('<li><a href="/%s?category=%d">%s</a></li>', $current, $i, $category[$i]);
+                                ?>
+                            </ul>
+                        </p>
+                    <?php endif ?>
+                    
+                </div>
+                    
+                        <!-- php if (!empty($_SESSION["id"])): ?>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="/#"><span class="glyphicon glyphicon-user"></span> Your Account (?= $user_name ?>)</a></li>
+                                <li><a href="/logout.php"><span class="glyphicon glyphicon-log-out"></span><strong> Log Out&nbsp;&nbsp;</strong></a></li>
+                            </ul>
+                        php endif ?> -->
                 
-                <?php endif ?>
-            </div>
-
-            <div id="middle">
+                <div id="middle">
