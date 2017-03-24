@@ -59,12 +59,15 @@
                             for($i=2; $i<sizeof($category); $i++)
                                 printf('<li><a href="/%s?category=%d">%s</a></li>', $current, $i, $category[$i]);
                         ?>
-                        <li><a href="/logout.php"><strong>Log Out</strong></a></li>
+                        
                     </ul>
                     
+                    <?php if (!empty($_SESSION["id"])): ?>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account&nbsp;&nbsp; </a></li>
+                        <li><a href="/#"><span class="glyphicon glyphicon-user"></span> Your Account (<?= $user_name ?>)</a></li>
+                        <li><a href="/logout.php"><span class="glyphicon glyphicon-log-out"></span><strong> Log Out&nbsp;&nbsp;</strong></a></li>
                     </ul>
+                    <?php endif ?>
                 </nav>
                 
                 <?php endif ?>
