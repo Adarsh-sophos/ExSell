@@ -109,12 +109,11 @@ p {
 
 .title {
     font-weight:bold;
-    
 }
 
 .product li img {
-    width:200px;
-    height:200px;
+    width:150px;
+    height:150px;
 }
 
 .product:hover {
@@ -127,4 +126,71 @@ p {
 }
 .bottom p {
     text-align:center;
+}
+
+.contact.seller {
+    background: #2874f0;
+    color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    border: none;
+}
+
+.contact {
+    display: inline-block;
+    border-radius: 2px;
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: 500;
+    vertical-align: super;
+    cursor: pointer;
+    outline: none;
+}
+
+._3o3r66 {
+    opacity: .6;
+    padding-top: 7px;
+    white-space: nowrap;
+}
+
+.btn {
+  background: #3498db;
+  -webkit-border-radius: 21;
+  -moz-border-radius: 21;
+  border-radius: 21px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 7px 15px 7px 15px;
+  text-decoration: none;
+  border: none;
+}
+
+.btn:hover {
+  background: #fc3c89;
+  text-decoration: none;
+}
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover span {
+  padding-right: 25px;
+}
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
 }

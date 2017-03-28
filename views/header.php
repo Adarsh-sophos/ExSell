@@ -18,11 +18,11 @@
                 <a href="/"><img alt="Amazon" src="/img/logo.png"/></a>
                 <?php if (!empty($_SESSION["id"])): ?>
                 <ul class="hover-list">
+                    <a href="#"><li> Your Account&nbsp;&nbsp; </li></a>
                     <a href="/store.php"><li>Go to Store&nbsp;&nbsp;</li></a>
                     <a href="/sell.php"><li>Want to sell item&nbsp;&nbsp;</li></a>
                     <a href="/password.php"><li>Change Password</li></a>
                     <a href="/logout.php"><li>Log Out</li></a>
-                    <a href="#"><li> Your Account&nbsp;&nbsp; </li></a>
                 </ul>
                 <?php endif ?>
                 
@@ -58,12 +58,5 @@
                     <?php endif ?>
                     
                 </div>
-                    
-                        <!-- php if (!empty($_SESSION["id"])): ?>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="/#"><span class="glyphicon glyphicon-user"></span> Your Account (?= $user_name ?>)</a></li>
-                                <li><a href="/logout.php"><span class="glyphicon glyphicon-log-out"></span><strong> Log Out&nbsp;&nbsp;</strong></a></li>
-                            </ul>
-                        php endif ?> -->
                 
                 <div id="middle">
