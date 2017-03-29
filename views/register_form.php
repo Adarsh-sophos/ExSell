@@ -1,16 +1,22 @@
-<form action="register.php" method="post">
+<form action="register.php" method="post" enctype="multipart/form-data">
     <fieldset>
         
+        <div id="profile-container">
+           <image id="profileImage" src="/profile pictures/default_dp.jpg" />
+        </div>
+        <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo">
+        </br>
+        
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="first_name" placeholder="First Name" type="text"/>
+            <input autofocus class="form-control" name="first_name" placeholder="First Name" type="text"/>
         </div>
         
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="last_name" placeholder="Last Name" type="text"/>
+            <input autofocus class="form-control" name="last_name" placeholder="Last Name" type="text"/>
         </div>
         
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="email" placeholder="E-mail" type="text"/>
+            <input autofocus class="form-control" name="email" placeholder="E-mail" type="text"/>
         </div>
         
         <div class="form-group">
@@ -39,8 +45,7 @@
         </select></br></br>
         
         <div class="form-group">
-            <button class="btn btn-default" type="submit">
-                <span aria-hidden="true" class="glyphicon glyphicon-log-in"></span>
+            <button class="btn" type="submit">
                 Register
             </button>
         </div>

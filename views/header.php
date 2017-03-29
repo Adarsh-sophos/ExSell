@@ -2,12 +2,18 @@
 <html>
     <head>
         <link href="/css/styles.css" rel="stylesheet"/>
+        
         <?php if (isset($title)): ?>
             <title><?= htmlspecialchars($title) ?></title>
         <?php else: ?>
             <title>ExSell</title>
         <?php endif ?>
+        
+        <!-- https://jquery.com/ -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        
         <script src="/js/scripts.js"></script>
+        
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     </head>
     
@@ -18,8 +24,9 @@
                 <a href="/"><img alt="Amazon" src="/img/logo.png"/></a>
                 <?php if (!empty($_SESSION["id"])): ?>
                 <ul class="hover-list">
-                    <a href="#"><li> Your Account&nbsp;&nbsp; </li></a>
-                    <a href="/store.php"><li>Go to Store&nbsp;&nbsp;</li></a>
+                    <a href="/account.php"><li> Your Account </li></a>
+                    <a href="/store.php"><li>Go to Store</li></a>
+                    <a href="/"><li>Go to Dashboard</li></a>
                     <a href="/sell.php"><li>Want to sell item&nbsp;&nbsp;</li></a>
                     <a href="/password.php"><li>Change Password</li></a>
                     <a href="/logout.php"><li>Log Out</li></a>
@@ -34,6 +41,9 @@
                     
                     <?php if (!empty($_SESSION["id"])): ?>
                         <h2 id ="welcome">Welcome, <a href="/"><?= $user_name ?></a></h2>
+                        <div id="profile-container">
+                            <a href="/account.php"><img src = "<?= $dp_path ?>" alt="Profile Picture" /></a>
+                        </div>
                     <?php endif ?>
                     
                     <?php if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php" || basename($_SERVER["SCRIPT_FILENAME"]) == "store.php")): ?>

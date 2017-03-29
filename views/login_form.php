@@ -1,10 +1,10 @@
 <form action="login.php" method="post">
     <fieldset>
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="email" placeholder="E-mail" type="text"/>
+            <input autocomplete="off" autofocus class="form-control" name="email" placeholder="E-mail" type="text" required=""/>
         </div>
         <div class="form-group">
-            <input class="form-control" name="password" placeholder="Password" type="password"/>
+            <input class="form-control" name="password" placeholder="Password" type="password" required=""/>
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">

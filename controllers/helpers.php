@@ -2,9 +2,6 @@
 
     require_once("config.php");
 
-    /**
-     * Apologizes to user with message.
-     */
     function apologize($message)
     {
         render("apology.php", ["message" => $message]);
@@ -70,9 +67,11 @@
             if(!empty($_SESSION["id"]))
             {
                 $link = mysqli_connect('localhost', 'adarsh_jain', 'v1kCjsvLYytrBTGV', 'store');
-                $query = sprintf("SELECT first_name FROM users WHERE id = '%s'", $_SESSION["id"]);
+                $query = sprintf("SELECT first_name,dp FROM users WHERE id = '%s'", $_SESSION["id"]);
                 $user = mysqli_query($link, $query);
-                $user_name = mysqli_fetch_array($user)["first_name"];
+                $temp = mysqli_fetch_array($user);
+                $user_name = $temp["first_name"];
+                $dp_path = $temp["dp"];
             }
             
             //items of different categories
