@@ -7,7 +7,7 @@
     // requirements
     require("helpers.php");
     
-    date_default_timezone_set("Asia/Kolkata");
+    //date_default_timezone_set("Asia/Kolkata");
     
     //connecting to database
     $link = mysqli_connect('localhost', 'adarsh_jain', 'v1kCjsvLYytrBTGV', 'store');

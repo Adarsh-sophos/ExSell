@@ -40,43 +40,55 @@
         }
         
         
-        //getting file name
-        $target_dir = "profile pictures/";
-        $target_file = $target_dir . basename($_FILES["profile_photo"]["name"]);
-        $uploadOk = 1;
-        
-        //file extension
-        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-        
-        $check = getimagesize($_FILES["profile_photo"]["tmp_name"]);
-        if($check !== false)
+        if($_FILES["profile_photo"]["error"] != 4)
         {
-            //echo "File is an image - " . $check["mime"] . ".</br>";
+            //getting file name
+            $target_dir = "profile pictures/";
+            $target_file = $target_dir . basename($_FILES["profile_photo"]["name"]);
             $uploadOk = 1;
-        } 
-        else 
-        {
-            apologize("File is not an image.");
-            $uploadOk = 0;
+            
+            //file extension
+            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            
+            $check = getimagesize($_FILES["profile_photo"]["tmp_name"]);
+            if($check !== false)
+            {
+                //echo "File is an image - " . $check["mime"] . ".</br>";
+                $uploadOk = 1;
+            } 
+            else 
+            {
+                apologize("File is not an image.");
+                $uploadOk = 0;
+            }
+            
+            //checking size of uploaded file
+            if ($_FILES["profile_photo"]["size"] > 1000000)
+            {
+                apologize("Your file is too large(>1MB).");
+                $uploadOk = 0;
+            }
+            
+            //checking extension of file
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
+            {
+                apologize("Only JPG, JPEG, PNG & GIF files are allowed.</br>");
+                $uploadOk = 0;
+            }
+            
+            //checking if file already exist
+            if (file_exists($target_file)) 
+                $target_file = $target_dir . str_replace('.'.$imageFileType, "", $_FILES["profile_photo"]["name"]) . '_' . $_POST["first_name"] . '.'. $imageFileType;
+            
+            //checking if there was an error
+            if ($uploadOk == 0) 
+                apologize("Your file was not uploaded.");
+            else
+            {
+                if (!move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $target_file))
+                    apologize("There was an error uploading your file.");
+            }
         }
-        
-        //checking size of uploaded file
-        if ($_FILES["profile_photo"]["size"] > 1000000)
-        {
-            apologize("Your file is too large(>1MB).");
-            $uploadOk = 0;
-        }
-        
-        //checking extension of file
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
-        {
-            apologize("Only JPG, JPEG, PNG & GIF files are allowed.</br>");
-            $uploadOk = 0;
-        }
-        
-        //checking if file already exist
-        if (file_exists($target_file)) 
-            $target_file = $target_dir . str_replace('.'.$imageFileType, "", $_FILES["item_image"]["name"]) . '_' . $_POST["first_name"] . '.'. $imageFileType;
         
         $selected_key = $_POST['college'];
         $selected_college = $colleges[$selected_key];
@@ -86,7 +98,11 @@
         else
             $choice = 'F';
         
-        $query = sprintf("INSERT IGNORE INTO users (first_name,last_name,email,hash,college,gender,dp) VALUES ('%s','%s','%s','%s','%s','%s','%s')", $_POST["first_name"], $_POST["last_name"],$_POST["email"], password_hash($_POST["password"],PASSWORD_DEFAULT), $selected_college, $choice, $target_file);
+        if(isset($target_file))
+            $query = sprintf("INSERT IGNORE INTO users (first_name,last_name,email,hash,college,gender,dp) VALUES ('%s','%s','%s','%s','%s','%s','%s')", $_POST["first_name"], $_POST["last_name"],$_POST["email"], password_hash($_POST["password"],PASSWORD_DEFAULT), $selected_college, $choice, $target_file);
+        else
+            $query = sprintf("INSERT IGNORE INTO users (first_name,last_name,email,hash,college,gender) VALUES ('%s','%s','%s','%s','%s','%s')", $_POST["first_name"], $_POST["last_name"],$_POST["email"], password_hash($_POST["password"],PASSWORD_DEFAULT), $selected_college, $choice);
+
         $check = mysqli_query($link, $query);
         
         if ($check == 0)

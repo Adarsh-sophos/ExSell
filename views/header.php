@@ -39,12 +39,19 @@
     
                 <div class="top">
                     
-                    <?php if (!empty($_SESSION["id"])): ?>
-                        <h2 id ="welcome">Welcome, <a href="/"><?= $user_name ?></a></h2>
-                        <div id="profile-container">
-                            <a href="/account.php"><img src = "<?= $dp_path ?>" alt="Profile Picture" /></a>
-                        </div>
-                    <?php endif ?>
+                    <?php 
+                        if (!empty($_SESSION["id"]))
+                        {
+                            printf('<h2 id ="welcome">Welcome, <a href="/">%s</a></h2>', $user_name);
+                            
+                            if(basename($_SERVER["SCRIPT_FILENAME"]) != "account.php")
+                            {
+                                print('<div id="profile-container">');
+                                    print('<a href="/account.php"><img src = "'. $dp_path .'"alt="Profile Picture" /></a>');
+                                print('</div>');
+                            }
+                        }
+                    ?>
                     
                     <?php if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php" || basename($_SERVER["SCRIPT_FILENAME"]) == "store.php")): ?>
                     

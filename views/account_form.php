@@ -1,5 +1,12 @@
-<form action="account.php" method="post">
+<form action="account.php" method="post" enctype="multipart/form-data">
     <fieldset>
+       
+        Change Profile Picture
+        <div id="profile-container">
+           <image id="profileImage" src="<?= $position["dp_path"] ?>"/>
+        </div>
+        <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo">
+        </br>
         
         <div class="form-group">
             <input autocomplete="off" class="form-control" name="first_name" placeholder="First Name" value= <?= $position["first_name"] ?> type="text"/>

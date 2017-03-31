@@ -1,2 +1,2 @@
-<h1>Sorry!</h1>
+<h1 id ="welcome">Sorry!</h1>
 <p><?= htmlspecialchars($message) ?></p>
