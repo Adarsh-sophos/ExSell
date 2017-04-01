@@ -19,7 +19,7 @@ body, h1, h2, h3, h4, h5, h6 {
 .sidenav {
     position:fixed;
     height:100%;
-    width:20%;
+    width:15%;
     background-color:white;
 }
 
@@ -28,8 +28,8 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .content {
-    width:75%;
-    margin-left:25%;
+    width:80%;
+    margin-left:20%;
     
 }
 

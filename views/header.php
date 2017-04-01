@@ -21,7 +21,9 @@
     <body>
         <div class="container">
             <div class="sidenav">
-                <a href="/"><img alt="Amazon" src="/img/logo.png"/></a>
+                
+                <a href="/"><img alt="ExSell" src="/img/logo.png" height="170px"/></a>
+                
                 <?php if (!empty($_SESSION["id"])): ?>
                 <ul class="hover-list">
                     <a href="/account.php"><li> Your Account </li></a>
