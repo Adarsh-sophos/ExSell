@@ -6,9 +6,26 @@
     // if user reached page via GET (as by clicking a link or via redirect)
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
-        // else render form
-        render("register_form.php", ["title" => "Register", "colleges" => $colleges]);
+        $query = sprintf("SELECT * FROM users WHERE id='%s'", $_SESSION["id"]);
+        $rows = mysqli_query($link, $query);
+  
+        if(mysqli_num_rows($rows) == 0)
+            apologize("There was an error.</br> Try Again !!");
+    
+        $row = mysqli_fetch_array($rows);
+        
+        $positions = [
+            "first_name" => $row["first_name"],
+            "last_name" => $row["last_name"],
+            "email" =>  $row["email"],
+            "college" => $row["college"],
+            "gender" => $row["gender"],
+            "dp_path" => $row["dp"]
+            ];
+        
+        render("account_form.php", ["title" => "Account", "position" => $positions, "colleges" => $colleges]);
     }
+        
 
     // else if user reached page via POST (as by submitting a form via POST)
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -18,27 +35,14 @@
         {
             apologize("You must provide your first name.");
         }
-        if (empty($_POST["last_name"]))
+        else if (empty($_POST["last_name"]))
         {
             apologize("You must provide your last name.");
         }
-        if (empty($_POST["email"]))
+        else if (empty($_POST["email"]))
         {
             apologize("You must provide your email.");
         }
-        else if (empty($_POST["password"]))
-        {
-            apologize("You must provide your password.");
-        }
-        else if (empty($_POST["confirmation"]))
-        {
-            apologize("You must confirm your password.");
-        }
-        else if ($_POST["confirmation"] != $_POST["password"])
-        {
-            apologize("Password doesn't match.");
-        }
-        
         
         if($_FILES["profile_photo"]["error"] != 4)
         {
@@ -77,7 +81,7 @@
             }
             
             //checking if file already exist
-            if (file_exists($target_file)) 
+            if (file_exists($target_file))
                 $target_file = $target_dir . str_replace('.'.$imageFileType, "", $_FILES["profile_photo"]["name"]) . '_' . $_POST["first_name"] . '.'. $imageFileType;
             
             //checking if there was an error
@@ -88,35 +92,44 @@
                 if (!move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $target_file))
                     apologize("There was an error uploading your file.");
             }
+            
+            //find the current profile picture
+            $query = sprintf("SELECT dp FROM users WHERE id = '%s'", $_SESSION["id"]);
+            $user = mysqli_query($link, $query);
+            $temp = mysqli_fetch_array($user);
+            $dp_path = $temp["dp"];
+            
+            //if current profile picture is not "default_dp", then remove that picture
+            if($dp_path != "/profile pictures/default_dp.jpg")
+                unlink($dp_path);
         }
         
+        //get the selected college key
         $selected_key = $_POST['college'];
+        
+        //get the college name using the $college array and key
         $selected_college = $colleges[$selected_key];
 
+        //check the gender
         if($_POST["choice"] == 'M')
             $choice = 'M';
         else
             $choice = 'F';
         
+        //if profile picture is uploaded then update the "dp" entry in database
         if(isset($target_file))
-            $query = sprintf("INSERT IGNORE INTO users (first_name,last_name,email,hash,college,gender,dp) VALUES ('%s','%s','%s','%s','%s','%s','%s')", $_POST["first_name"], $_POST["last_name"],$_POST["email"], password_hash($_POST["password"],PASSWORD_DEFAULT), $selected_college, $choice, $target_file);
+            $query = sprintf("UPDATE users SET first_name='%s', last_name='%s', email='%s', college='%s', gender = '%s', dp='%s' WHERE id='%s'", $_POST["first_name"], $_POST["last_name"], $_POST["email"], $selected_college, $choice, $target_file, $_SESSION["id"]);
+        
+        //else don't update the dp information
         else
-            $query = sprintf("INSERT IGNORE INTO users (first_name,last_name,email,hash,college,gender) VALUES ('%s','%s','%s','%s','%s','%s')", $_POST["first_name"], $_POST["last_name"],$_POST["email"], password_hash($_POST["password"],PASSWORD_DEFAULT), $selected_college, $choice);
-
+            $query = sprintf("UPDATE users SET first_name='%s', last_name='%s', email='%s', college='%s', gender = '%s' WHERE id='%s'", $_POST["first_name"], $_POST["last_name"], $_POST["email"], $selected_college, $choice, $_SESSION["id"]);
+        
         $check = mysqli_query($link, $query);
         
-        if ($check == 0)
-        {
-            apologize("Email already exists");
-        }
+        if ($check === false)
+            apologize("Can not update");
         else
-        {
-            $query = "SELECT LAST_INSERT_ID()  AS id";
-            $rows = mysqli_query($link, $query);
-            $id = mysqli_fetch_array($rows)["id"];
-            $_SESSION["id"] = $id;
             redirect("/");
-        }
     }
 
 ?>

@@ -1,14 +1,5 @@
 <?php
 
-    /**
-     * config.php
-     *
-     * Computer Science 50
-     * Problem Set 7
-     *
-     * Configures app.
-     */
-
     // display errors, warnings, and notices
     ini_set("display_errors", true);
     error_reporting(E_ALL);
@@ -16,12 +7,12 @@
     // requirements
     require("helpers.php");
     
-    date_default_timezone_set("Asia/Kolkata");
+    //date_default_timezone_set("Asia/Kolkata");
     
     //connecting to database
     $link = mysqli_connect('localhost', 'avravikiran', 'v1kCjsvLYytrBTGV', 'store');
     
-    $colleges = array('Select College','MNIT Jaipur','IIT Hyderabad',"IIT Bombay","IIT Delhi","IIT Kharagpur","IIT Kanpur","IIT Madras","IIT Guwahati","IIT Roorkee","IIT (BHU) Varanasi","IIT (ISM) Dhanbad");
+    $colleges = array('Select College','All','MNIT Jaipur','IIT Hyderabad',"IIT Bombay","IIT Delhi","IIT Kharagpur","IIT Kanpur","IIT Madras","IIT Guwahati","IIT Roorkee","IIT (BHU) Varanasi","IIT (ISM) Dhanbad");
     $category = array('Select Category', 'All', 'Books', 'Clothing', 'Electronics', 'Furniture', 'Sports', 'Vehicle', 'Others');
     
     // enable sessions
