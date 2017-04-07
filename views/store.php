@@ -17,9 +17,19 @@
 
         
         <?php
+        $a=0;
         foreach ($position as $positions)
         {
-            print("<div class ='product'><ul class='product-list'>");
+            
+            
+            if ($a<3) {
+                print("<div class ='product-top'><ul class='product-list'>");
+            }
+            else {
+                print("<div class ='product'><ul class='product-list'>");
+            }
+            $a++;
+            
             if( $positions["path"] == "no image" ){
                 printf("<li><img src = 'images/No image/comman.png' alt = %s > <li><a", $positions["category"]);
             }
