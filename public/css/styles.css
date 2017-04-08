@@ -19,8 +19,10 @@ body, h1, h2, h3, h4, h5, h6, p  {
 .sidenav {
     position:fixed;
     height:90%;
-    width:15%;
+    width:16%;
     background-color:white;
+    border-radius:2% 2% 2% 2%;
+    -webkit-border-radius: 2% 2% 2% 2%;
     
 }
 
@@ -36,6 +38,7 @@ body, h1, h2, h3, h4, h5, h6, p  {
 
 .hover-list {
     list-style-type:none;
+    padding-top:20px;
     padding-left: 0px;
 }
 
@@ -65,7 +68,7 @@ a {
 
 .hz-list {
     list-style-type:none;
-    padding-left: 0px;
+    text-align:-webkit-center;
 }
 
 .hz-list li {
@@ -76,7 +79,7 @@ a {
 
 .hz-list li:hover {
     background-color:grey;
-    box-shadow: 0px 0px 20px 5px rgba(105,91,105,0.56);
+    box-shadow: 0px 0px 20px 5px grey;
     color:white;
 }
 
@@ -103,17 +106,19 @@ p {
     display:inline-block;
     background-color:white;
     border:solid lightgrey 3px;
+    border-radius:2% 2% 2% 2%;
+    -webkit-border-radius: 2% 2% 2% 2%;
     
 }
 
 .product-top li img {
-    width:200px;
-    height:200px;
+    width:150px;
+    height:150px;
 }
 
 .product-top:hover {
     background-color:#f9f9f9;
-    box-shadow: 0px 0px 42px 5px rgba(105,91,105,0.56);
+    box-shadow: 0px 0px 42px 5px grey;
 }
 
 .title {
@@ -134,6 +139,8 @@ p {
     display:inline-block;
     background-color:white;
     border:solid lightgrey 3px;
+    border-radius:2% 2% 2% 2%;
+    -webkit-border-radius: 2% 2% 2% 2%;
     
 }
 
@@ -153,13 +160,14 @@ p {
 
 
 .product li img {
-    width:200px;
-    height:200px;
+
+    width:100px;
+    height:100px;
 }
 
 .product:hover {
     background-color:#f9f9f9;
-    box-shadow: 0px 0px 42px 5px rgba(105,91,105,0.56);
+    box-shadow: 0px 0px 42px 5px grey;
 }
 
 #middle {
@@ -221,10 +229,10 @@ p {
 }
 
 .btn span:after {
-  content: '\00bb';
+  content: '>>>';
   position: absolute;
   opacity: 0;
-  top: 0;
+  top: 10;
   right: -20px;
   transition: 0.5s;
 }
@@ -249,8 +257,8 @@ p {
 }
 
 #profile-container {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     overflow: hidden;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -291,4 +299,14 @@ p {
 .radio {
     margin:1%;
 }
+
+.product table {
+    margin-top: 1%;
+    width: 100%;
+}
+
+.product table tr,th,td {
+   text-align:center;
+}
+
 

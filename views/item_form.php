@@ -1,4 +1,9 @@
-<table class="table table-striped">
+<div class="top">
+
+<h2 class="heading">Contact Seller</h2>
+</div>
+<div class="product" style="width:100%">
+<table>
     <thead>
         <tr>
             <th style="text-align:center;">Image</th>
@@ -7,7 +12,7 @@
             <th style="text-align:center;">Price</th>
             <th style="text-align:center;">Date</th>
             <th style="text-align:center;">Contact</th>
-        </tr>
+        </tr><br>
     </thead>
     <tbody>
         <?php
@@ -26,10 +31,7 @@
     </tbody>
 
 </table>
-
-<div>
-    <a href="store.php?"></a>
     <?php
-        print('<td><a href = "store.php?'. $position["id"] .'">View other items from this seller.</a></td>');
+        print('<a href = "store.php?'. $position["id"] .'"><p style="text-align:center"><button class="btn">View other items from this seller</button><p></a>');
     ?>
-</div>
+</div

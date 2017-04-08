@@ -8,10 +8,6 @@
         <?php else: ?>
             <title>ExSell</title>
         <?php endif ?>
-        
-        <!-- https://jquery.com/ -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        
         <script src="/js/scripts.js"></script>
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -22,18 +18,23 @@
         <div class="container">
             <div class="sidenav">
                 
-                <a href="/"><img alt="ExSell" src="/img/logo.png" height="170px"/></a>
+                <a href="/"><img alt="ExSell" src="/img/logo.png"/></a>
                 
                 <?php if (!empty($_SESSION["id"])): ?>
+                    
+                    <?php if(basename($_SERVER["SCRIPT_FILENAME"]) != "account.php"): ?>
+                        <div id="profile-container">
+                            <a href="/account.php">
+                                <img src = "<?= $dp_path ?>" alt="Profile Picture" />
+                            </a>
+                        </div>
+                    <?php endif ?>
+                    
+                    <h2 style="text-align:center">
+                        <a href="/"><?= $user_name ?></a>
+                    </h2>
+                    
                 <ul class="hover-list">
-                    <?php
-                    if(basename($_SERVER["SCRIPT_FILENAME"]) != "account.php")
-                            {
-                                print('<div id="profile-container">');
-                                    print('<a href="/account.php"><img src = "'. $dp_path .'"alt="Profile Picture" /></a>');
-                                print('</div><br>');
-                        }
-                        ?>
                     <a href="/store.php"><li>Go to Store</li></a>
                     <a href="/"><li>Go to Dashboard</li></a>
                     <a href="/sell.php"><li>Want to sell item&nbsp;&nbsp;</li></a>
@@ -70,12 +71,11 @@
                             
                         }
                     ?>
-                    
                     <?php if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php" || basename($_SERVER["SCRIPT_FILENAME"]) == "store.php")): ?>
                     
                         <p style="text-align:center;">
                             <ul class="hz-list">
-                                <li>Filter: </li>
+                                <li> Filter: </li>
                     
                                 <?php
                                     if(basename($_SERVER["SCRIPT_FILENAME"]) == "index.php")

@@ -13,9 +13,7 @@
             </button>
         </p>
 </form>
-
-        
-        <?php
+<?php
         $a=0;
     foreach ($position as $positions)
     {
@@ -41,5 +39,4 @@
         print('<li><a class="contact seller" href = "item.php?'. $positions["id"] .'"><b>Contact Seller</b></a></li>');
         print("</ul></div>");
     }
-
 ?>
