@@ -1,7 +1,8 @@
+<div class="product" style="width:100%">
 <form action="account.php" method="post" enctype="multipart/form-data">
-    <fieldset>
+    <fieldset style="border:none;">
        
-        Change Profile Picture
+        <p>Change Profile information</p>
         <div id="profile-container">
            <image id="profileImage" src="<?= $position["dp_path"] ?>"/>
         </div>
@@ -20,7 +21,8 @@
             <input autocomplete="off" class="form-control" name="email" placeholder="E-mail" value= <?= $position["email"] ?> type="text"/>
         </div>
         
-        <select name="college" onchange="chk(this.value)">
+        <div class="form-group">
+        <select name="college" onchange="chk(this.value)" class="select">
             <option value="-1" disabled>Select College</option>
             <?php
                 for($i=2; $i<sizeof($colleges); $i++)
@@ -31,7 +33,8 @@
                         printf('<option value="%d">%s</option>',$i, $colleges[$i]);
                 }
             ?>
-        </select></br></br>
+        </select>
+        </div>
         
         <div class="form-group"> 
             <div class="radio">
@@ -61,3 +64,4 @@
         </div>
     </fieldset>
 </form>
+</div>

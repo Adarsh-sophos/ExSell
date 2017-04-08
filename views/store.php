@@ -17,50 +17,28 @@
         
         <?php
         $a=0;
-        foreach ($position as $positions)
-        {
-            
-            
-            if ($a<3) {
+    foreach ($position as $positions)
+    {
+        if ($a<3) {
                 print("<div class ='product-top'><ul class='product-list'>");
             }
             else {
                 print("<div class ='product'><ul class='product-list'>");
             }
-            $a++;
-            
-            if( $positions["path"] == "no image" ){
-                printf("<li><img src = 'images/No image/comman.png' alt = %s > <li><a", $positions["category"]);
-            }
-                
-            else{
-                printf("<li> <img src = %s alt = %s> <li>", $positions["path"], $positions["category"]);
-            }
-                
-            print("<li><p class='title'>" . $positions["title"] . "<p><li>");
-            print("<li>" . $positions["price"] . "<li>");
-            print("<li>" . $positions["college"] . "<li>");
-            print("<li>" . $positions["category"] . "<li>");
-            print("<li>" . date_format(date_create($positions["date"]), "d M Y, h:i A") . "<li>");
-            print('<li><a href = "item.php?'. $positions["id"] .'">Contact Seller</a><li>');
-            print("</ul></div>");
-        }
-
-    foreach ($position as $positions)
-    {
-        print("<div class ='product'><ul class='product-list'>");
+        $a++;
+        
         
         if( $positions["path"] == "no image" )
-            printf("<li><img src = 'images/No image/comman.png' alt = %s width=100 height=100> </li>", $positions["category"]);
+            printf("<li><img src = 'images/No image/comman.png' alt = %s width=200 height=200> </li>", $positions["category"]);
         else
-            printf("<li> <img src = %s alt = %s> <li>", $positions["path"], $positions["category"]);
+            printf("<li><img src = %s alt = %s><li>", $positions["path"], $positions["category"]);
             
         print("<li title='item name'><p class='title'>" . $positions["title"] . "</p></li>");
         print("<li title='price'>&#8377; " . $positions["price"] . "</li>");
         print("<li title='sellers college'>" . $positions["college"] . "</li>");
         print("<li title='category' class='_3o3r66'>" . $positions["category"] . "</li>");
         print("<li title='put on sell'>" . date_format(date_create($positions["date"]), "d M Y, h:i A") . "</li>");
-        print('<li><a class="contact seller" href = "item.php?'. $positions["id"] .'">Contact Seller</a></li>');
+        print('<li><a class="contact seller" href = "item.php?'. $positions["id"] .'"><b>Contact Seller</b></a></li>');
         print("</ul></div>");
     }
 

@@ -26,7 +26,14 @@
                 
                 <?php if (!empty($_SESSION["id"])): ?>
                 <ul class="hover-list">
-                    <a href="/account.php"><li> Your Account </li></a>
+                    <?php
+                    if(basename($_SERVER["SCRIPT_FILENAME"]) != "account.php")
+                            {
+                                print('<div id="profile-container">');
+                                    print('<a href="/account.php"><img src = "'. $dp_path .'"alt="Profile Picture" /></a>');
+                                print('</div><br>');
+                        }
+                        ?>
                     <a href="/store.php"><li>Go to Store</li></a>
                     <a href="/"><li>Go to Dashboard</li></a>
                     <a href="/sell.php"><li>Want to sell item&nbsp;&nbsp;</li></a>
@@ -42,16 +49,25 @@
                 <div class="top">
                     
                     <?php 
-                        if (!empty($_SESSION["id"]))
+                        if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php"))
                         {
-                            printf('<h2 id ="welcome">Welcome, <a href="/">%s</a></h2>', $user_name);
+                            printf('<h2 class ="heading">Welcome , <a href="/">%s</a><br>This your Dashboard</h2>', $user_name);
                             
-                            if(basename($_SERVER["SCRIPT_FILENAME"]) != "account.php")
-                            {
-                                print('<div id="profile-container">');
-                                    print('<a href="/account.php"><img src = "'. $dp_path .'"alt="Profile Picture" /></a>');
-                                print('</div>');
-                            }
+                        }
+                        if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "store.php"))
+                        {
+                            printf('<h2 class ="heading">This is our store , <a href="/">%s</a></h2>', $user_name);
+                            
+                        }
+                        if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "sell.php"))
+                        {
+                            printf('<h2 class ="heading">Enter your product details , <a href="/">%s</a></h2>', $user_name);
+                            
+                        }
+                        if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "password.php"))
+                        {
+                            printf('<h2 class ="heading">Enter your new password , <a href="/">%s</a></h2>', $user_name);
+                            
                         }
                     ?>
                     

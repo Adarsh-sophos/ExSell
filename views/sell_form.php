@@ -1,13 +1,15 @@
+<div class="product" style="width:100%">
 <form action="sell.php" method="post" enctype="multipart/form-data">
-    <fieldset>
-        
-        <select name="category" onchange="chk(this.value)">
+    <fieldset style="border:none">
+        <p>Enter product details</p>
+        <div class="form-group">
+        <select name="category" class="select" onchange="chk(this.value)">
             <option value="0" selected disabled>Select Category</option>
             <?php
                 for($i=2; $i<sizeof($category); $i++)
                     printf('<option value="%d">%s</option>',$i, $category[$i]);
             ?>
-        </select></br></br>
+        </select></div>
         
         <div class="form-group">
             <input autofocus class="form-control" name="title" placeholder="Title(Min. length 4 character)" type="text"/>
@@ -34,14 +36,16 @@
             <input class="form-control" name="price" placeholder="Your Price(In Rs.)" type="text"/>
         </div>
         
-        <input type="file" name="item_image">
-        </br></br>
+        <div class="form-group">
+        Image : <input type="file" name="item_image">
+        </div>
         
         <div class="form-group">
-            <button type="submit">
+            <button type="submit" class="btn">
                 <span aria-hidden="true" class="glyphicon glyphicon-log-in"></span>
                 Submit
             </button>
         </div>
     </fieldset>
 </form>
+</div>
