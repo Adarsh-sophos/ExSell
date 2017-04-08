@@ -8,6 +8,10 @@
         <?php else: ?>
             <title>ExSell</title>
         <?php endif ?>
+        
+        <!-- https://jquery.com/ -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        
         <script src="/js/scripts.js"></script>
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -34,13 +38,20 @@
                         <a href="/"><?= $user_name ?></a>
                     </h2>
                     
-                <ul class="hover-list">
-                    <a href="/store.php"><li>Go to Store</li></a>
-                    <a href="/"><li>Go to Dashboard</li></a>
-                    <a href="/sell.php"><li>Want to sell item&nbsp;&nbsp;</li></a>
-                    <a href="/password.php"><li>Change Password</li></a>
-                    <a href="/logout.php"><li>Log Out</li></a>
-                </ul>
+                    <ul class="hover-list">
+                        <a href="/store.php"><li>Go to Store</li></a>
+                        <a href="/"><li>Go to Dashboard</li></a>
+                        <a href="/sell.php"><li>Want to sell item&nbsp;&nbsp;</li></a>
+                        <a href="/account.php"><li>Your Account</li></a>
+                        <a href="/password.php"><li>Change Password</li></a>
+                        <a href="/logout.php"><li>Log Out</li></a>
+                    </ul>
+                <?php endif ?>
+                
+                <?php if (empty($_SESSION["id"])): ?>
+                    <ul class="hover-list">
+                        <a href="/store.php"><li>Go to Store</li></a>
+                    </ul>
                 <?php endif ?>
                 
             </div>
@@ -51,26 +62,18 @@
                     
                     <?php 
                         if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php"))
-                        {
-                            printf('<h2 class ="heading">Welcome , <a href="/">%s</a><br>This your Dashboard</h2>', $user_name);
-                            
-                        }
+                            printf('<h2 class ="heading">Welcome , <a href="/">%s</a><br>This is your Dashboard</h2>', $user_name);
+                        
                         if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "store.php"))
-                        {
                             printf('<h2 class ="heading">This is our store , <a href="/">%s</a></h2>', $user_name);
                             
-                        }
                         if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "sell.php"))
-                        {
                             printf('<h2 class ="heading">Enter your product details , <a href="/">%s</a></h2>', $user_name);
-                            
-                        }
+                        
                         if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "password.php"))
-                        {
                             printf('<h2 class ="heading">Enter your new password , <a href="/">%s</a></h2>', $user_name);
-                            
-                        }
                     ?>
+                    
                     <?php if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php" || basename($_SERVER["SCRIPT_FILENAME"]) == "store.php")): ?>
                     
                         <p style="text-align:center;">
@@ -90,6 +93,7 @@
                                 ?>
                             </ul>
                         </p>
+                        
                     <?php endif ?>
                     
                 </div>

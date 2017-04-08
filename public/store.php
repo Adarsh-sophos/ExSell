@@ -18,11 +18,22 @@
         
             //If user selected "All" then show all categories
             if($selected_key == 1)
-                $query = sprintf("SELECT * FROM items WHERE seller_id != '%s' LIMIT 10", $_SESSION["id"]);
-        
+            {
+                if(empty($_SESSION["id"]))
+                    $query = sprintf("SELECT * FROM items");
+                else
+                    $query = sprintf("SELECT * FROM items WHERE seller_id != '%s' LIMIT 20", $_SESSION["id"]);
+            }
+
             //else show only the selected colleges
             else
-                $query = sprintf("SELECT * FROM items WHERE college='%s' AND seller_id != '%s'", $selected_college, $_SESSION["id"]);
+            {
+                if(empty($_SESSION["id"]))
+                    $query = sprintf("SELECT * FROM items WHERE college='%s'", $selected_college);
+                else
+                    $query = sprintf("SELECT * FROM items WHERE college='%s' AND seller_id != '%s'", $selected_college, $_SESSION["id"]);
+
+            }
         }
         
         $rows = mysqli_query($link, $query);
@@ -44,7 +55,13 @@
         
         //if user simply redirected to that page
         else
-            $query = sprintf("SELECT * FROM items WHERE seller_id != '%s' LIMIT 10", $_SESSION["id"]);
+        {
+            if(empty($_SESSION["id"]))
+                $query = sprintf("SELECT * FROM items");
+            else
+                $query = sprintf("SELECT * FROM items WHERE seller_id != '%s' LIMIT 20", $_SESSION["id"]);
+        }
+            
             
         $rows = mysqli_query($link, $query);
   

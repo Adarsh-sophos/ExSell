@@ -15,31 +15,30 @@
     {
         // validate submission
         if (empty($_POST["title"]))
-        {
             apologize("You must give title of your item.");
-        }
+        
         else if (empty($_POST["description"]))
-        {
             apologize("You must provide description");
-        }
+        
         else if (empty($_POST["contact"]))
-        {
             apologize("You must give your contact information");
-        }
-        else if (empty($_POST["price"]))
-        {
-            apologize("You must give price of your item.");
-        }
+        
         else if (!isset($_POST['category']))
-        {
             apologize("You must select a category.");
-        }
+        
         else if (!isset($_POST['choice']))
-        {
             apologize("You must choose 'sell or donate'.");
-        }
+            
+        
+        //validate constraints
+        if(strlen($_POST["title"]) < 4)
+            apologize("Title length must be >= 4");
+        
+        else if(strlen($_POST["description"]) > 200 || strlen($_POST["description"]) < 4)
+            apologize("Description length must be in range 4-200 chars.");
         
         
+        //check if a image is selected or not for being uploaded
         if($_FILES["item_image"]["error"] != 4)
         {
             //getting file name
@@ -90,13 +89,27 @@
             }
         }
         
+        //selected category of item
         $selected_key = $_POST['category'];
         $selected_category = $category[$selected_key];
         
-        if($_POST["choice"] == 'donate')
-            $choice = 'donate';
+        //want to donate or sell
+        if($_POST["choice"] == 'D')
+            $choice = 'D';
         else
-            $choice = 'sell';
+            $choice = 'S';
+        
+        if($choice == 'D' && !empty($_POST["price"]))
+            apologize("You are donating your item, price should not be mentioned.");
+        
+        else if($choice == 'D' && empty($_POST["price"]))
+            $_POST["price"] = 0;
+        
+        else if($choice == 'S' && empty($_POST["price"]))
+            apologize("You must give the price for your item.");
+        
+        else if(is_numeric($_POST["price"]) === False)
+            apologize("Price is not a valide number.");
         
         $query = sprintf("SELECT college FROM users WHERE id = '%s'",$_SESSION["id"]);
         $result = mysqli_query($link, $query);

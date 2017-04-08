@@ -1,7 +1,7 @@
 <form action="register.php" method="post" enctype="multipart/form-data">
     <fieldset>
         
-        <div id="profile-container">
+        <div id="profile-contain">
            <image id="profileImage" src="/profile pictures/default_dp.jpg" />
         </div>
         <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo">
@@ -34,19 +34,21 @@
             <div class="radio">
               <label><input type="radio" name="choice" value="F">Female</label>
             </div>
-        </div>
+        <div class="form-group"> 
         
-        <select name="college" onchange="chk(this.value)">
-            <option value="0" selected disabled>Select College</option>
-            <?php
-                for($i=2; $i<sizeof($colleges); $i++)
-                    printf('<option value="%d">%s</option>',$i, $colleges[$i]);
-            ?>
-        </select></br></br>
+        <div class="form-group"> 
+            <select name="college" class="select" onchange="chk(this.value)">
+                <option value="0" selected disabled>Select College</option>
+                <?php
+                    for($i=2; $i<sizeof($colleges); $i++)
+                        printf('<option value="%d">%s</option>',$i, $colleges[$i]);
+                ?>
+            </select>
+        </div>
         
         <div class="form-group">
             <button class="btn" type="submit">
-                Register
+                <span>Register</span>
             </button>
         </div>
     </fieldset>

@@ -1,20 +1,22 @@
 <form action="store.php" method="post">
-        <p>
-            <select class ="select" name="college" id="college" onchange="chk(this.value)">
-                <option value="-1" selected disabled>Select College</option>
-                <?php
-                    for($i=1; $i<sizeof($colleges); $i++)
-                        printf('<option value="%d">%s</option>',$i, $colleges[$i]);
-                ?>
-            </select>
+    <p>
+        <select class ="select" name="college" id="college" onchange="chk(this.value)">
+            <option value="-1" selected disabled>Select College</option>
+            <?php
+                for($i=1; $i<sizeof($colleges); $i++)
+                    printf('<option value="%d">%s</option>',$i, $colleges[$i]);
+            ?>
+        </select>
             
-            <button class="select" type="submit">
-                Submit
-            </button>
-        </p>
+        <button class="select" type="submit">
+            Submit
+        </button>
+    </p>
 </form>
+
 <?php
-        $a=0;
+
+    $a=0;
     foreach ($position as $positions)
     {
         if ($a<3) {
