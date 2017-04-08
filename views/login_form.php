@@ -17,17 +17,13 @@
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">
-                <span aria-hidden="true" class="glyphicon glyphicon-log-in"></span>
+                
                 Log In
             </button>
         </div>
         <p>or</p>
         <div class="form-group">
-            <a href="register.php">
-            <button class="btn btn-default" type="submit">
-                <span aria-hidden="true" class="glyphicon glyphicon-log-in"></span>
-                Register
-            </button></a>
+                <h4><a href="register.php">Register</a></h4>
         </div>
     </fieldset>
 </form>
