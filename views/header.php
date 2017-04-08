@@ -22,9 +22,22 @@
         <div class="container">
             <div class="sidenav">
                 
-                <a href="/"><img alt="ExSell" src="/img/logo.png" height="170px"/></a>
+                <a href="/"><img alt="ExSell" src="/img/logo.png"/></a>
                 
                 <?php if (!empty($_SESSION["id"])): ?>
+                    
+                    <?php if(basename($_SERVER["SCRIPT_FILENAME"]) != "account.php"): ?>
+                        <div id="profile-container">
+                            <a href="/account.php">
+                                <img src = "<?= $dp_path ?>" alt="Profile Picture" />
+                            </a>
+                        </div>
+                    <?php endif ?>
+                    
+                    <h2 id ="welcome">
+                        <a href="/"><?= $user_name ?></a>
+                    </h2>
+                    
                 <ul class="hover-list">
                     <a href="/account.php"><li> Your Account </li></a>
                     <a href="/store.php"><li>Go to Store</li></a>
@@ -40,20 +53,6 @@
             <div class="content">
     
                 <div class="top">
-                    
-                    <?php 
-                        if (!empty($_SESSION["id"]))
-                        {
-                            printf('<h2 id ="welcome">Welcome, <a href="/">%s</a></h2>', $user_name);
-                            
-                            if(basename($_SERVER["SCRIPT_FILENAME"]) != "account.php")
-                            {
-                                print('<div id="profile-container">');
-                                    print('<a href="/account.php"><img src = "'. $dp_path .'"alt="Profile Picture" /></a>');
-                                print('</div>');
-                            }
-                        }
-                    ?>
                     
                     <?php if (!empty($_SESSION["id"]) && (basename($_SERVER["SCRIPT_FILENAME"]) == "index.php" || basename($_SERVER["SCRIPT_FILENAME"]) == "store.php")): ?>
                     

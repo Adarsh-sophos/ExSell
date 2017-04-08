@@ -15,43 +15,20 @@
 </form>
 
         
-        <?php
-        $a=0;
-        foreach ($position as $positions)
-        {
-            
-            
-            if ($a<3) {
-                print("<div class ='product-top'><ul class='product-list'>");
-            }
-            else {
-                print("<div class ='product'><ul class='product-list'>");
-            }
-            $a++;
-            
-            if( $positions["path"] == "no image" ){
-                printf("<li><img src = 'images/No image/comman.png' alt = %s > <li><a", $positions["category"]);
-            }
-                
-            else{
-                printf("<li> <img src = %s alt = %s> <li>", $positions["path"], $positions["category"]);
-            }
-                
-            print("<li><p class='title'>" . $positions["title"] . "<p><li>");
-            print("<li>" . $positions["price"] . "<li>");
-            print("<li>" . $positions["college"] . "<li>");
-            print("<li>" . $positions["category"] . "<li>");
-            print("<li>" . date_format(date_create($positions["date"]), "d M Y, h:i A") . "<li>");
-            print('<li><a href = "item.php?'. $positions["id"] .'">Contact Seller</a><li>');
-            print("</ul></div>");
-        }
-
+<?php
+    $a=0;
     foreach ($position as $positions)
     {
-        print("<div class ='product'><ul class='product-list'>");
-        
+        if ($a<3)
+            print("<div class ='product-top'><ul class='product-list'>");
+
+        else
+            print("<div class ='product'><ul class='product-list'>");
+
+        $a++;
+            
         if( $positions["path"] == "no image" )
-            printf("<li><img src = 'images/No image/comman.png' alt = %s width=100 height=100> </li>", $positions["category"]);
+            printf("<li><img src = 'images/No image/comman.png' alt = %s <li>", $positions["category"]);
         else
             printf("<li> <img src = %s alt = %s> <li>", $positions["path"], $positions["category"]);
             
@@ -63,5 +40,4 @@
         print('<li><a class="contact seller" href = "item.php?'. $positions["id"] .'">Contact Seller</a></li>');
         print("</ul></div>");
     }
-
 ?>
