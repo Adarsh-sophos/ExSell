@@ -15,6 +15,7 @@
         <script src="/js/scripts.js"></script>
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="shortcut icon" type="image/png" href="../img/favicon.png"/>
     </head>
     
     

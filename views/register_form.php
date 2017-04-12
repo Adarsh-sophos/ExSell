@@ -51,8 +51,8 @@
                 <span>Register</span>
             </button>
         </div>
+    <p style="text-align:center">or <a href="login.php"><span style="color:blue">Log in</span></a></p>
     </fieldset>
+    
 </form>
-<div>
-    or <a href="login.php">Log in</a>
-</div>
+

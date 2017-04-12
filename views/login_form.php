@@ -19,11 +19,8 @@
                     <span>Log In</span>
                 </button>
             </div>
+            <p style="text-align:center"> or <a href="register.php"><span style="color:blue">register</span></a> for an account</p>
 
         </fieldset>
     </form>
-</div>
-
-<div>
-    or <a href="register.php">register</a> for an account
 </div>

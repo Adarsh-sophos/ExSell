@@ -66,7 +66,7 @@
         {
             if(!empty($_SESSION["id"]))
             {
-                $link = mysqli_connect('localhost', 'adarsh_jain', 'v1kCjsvLYytrBTGV', 'store');
+                $link = mysqli_connect('localhost', 'avravikiran', 'v1kCjsvLYytrBTGV', 'store');
                 $query = sprintf("SELECT first_name,dp FROM users WHERE id = '%s'", $_SESSION["id"]);
                 $user = mysqli_query($link, $query);
                 $temp = mysqli_fetch_array($user);
