@@ -10,7 +10,8 @@
         <?php endif ?>
         
         <!-- https://jquery.com/ -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         
         <script src="/js/scripts.js"></script>
         

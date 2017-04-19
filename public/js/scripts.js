@@ -1,3 +1,4 @@
+//image uploading theme 
 $(function(){
     
     $("#profileImage").click(function(e) {
