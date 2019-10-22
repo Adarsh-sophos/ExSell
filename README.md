@@ -13,9 +13,9 @@ DOCUMENTATION For ExSell ( Project 2 ) **Online Marketplace for College Students
 <br/>
 
 ## About
-- ExSell is a website that serves as an online marketplace for college students.
+- ExSell is an easy-to-use website that serves as an online marketplace for college students.
 - Students can go to the website to sell their used items or browse items put on sale by other students of the same or from different colleges.
-- This website purely uses core PHP, HTML, CSS, JAVASCRIPT, My SQL, and SQL. 
+- This website purely uses core PHP, HTML, CSS, JAVASCRIPT, MySQL, and SQL. 
 - Any third party CSS or PHP framework/library say BOOTSTRAP, Codeigniter, CS50 library or the likes are not used for the devlopment of website.
 
 <br/>
