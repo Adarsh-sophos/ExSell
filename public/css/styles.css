@@ -74,7 +74,7 @@ a {
 .hz-list li {
     text-align: center;
     display: inline-block;
-    padding: 1% 2%;
+    padding: 2% 2%;
 }
 
 .hz-list li:hover {
