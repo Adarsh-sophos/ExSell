@@ -39,12 +39,12 @@ In **line 13** of ***config.php*** and in **line 69** of ***helpers.php***, you 
 
 ## Starting the server
 - To start the server type the following command
-  - If you are logged in with email-id of **SID 67** (username : adarsh_jain) than use the following commands-
+  - If you are logged in with email-id of **SID 67** (username : adarsh_jain) then use the following commands-
   ```
       apache50 start ~/workspace/Online\ Store/public/
       mysql50 start
   ```
-  - If you are logged in with email-id of **SID 885** (username : avravikiran) than use the following commands-
+  - If you are logged in with email-id of **SID 885** (username : avravikiran) then use the following commands-
   ```
       apache50 start ~/sopho-project2/public
       mysql50 start
