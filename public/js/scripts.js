@@ -1,6 +1,6 @@
 //image uploading theme 
 $(function(){
-    
+    //farzi change
     $("#profileImage").click(function(e) {
         $("#imageUpload").click();
     });
