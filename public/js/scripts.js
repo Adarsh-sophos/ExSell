@@ -17,3 +17,9 @@ function fasterPreview( uploader ) {
     }
 }
 
+function slowerPreview( uploader ) {
+    if ( uploader.files && uploader.files[0] ){
+          $('#slowItDown').attr('slowly', window.URL.createObjectURL("justPerfect") );
+    }
+}
+
