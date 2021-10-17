@@ -20,40 +20,6 @@ DOCUMENTATION For ExSell ( Project 2 ) **Online Marketplace for College Students
 
 <br/>
 
-## Setting username and password for mysql server
-In **line 13** of ***config.php*** and in **line 69** of ***helpers.php***, you have to change the username depending upon the login id. Password need not to be changes as it is same for both.
-- If you are on CS50 IDE using email-id of SID 67 (username : adarsh_jain) than
- ```
-    //connecting to database
-    $link = mysqli_connect('localhost', 'adarsh_jain', 'v1kCjsvLYytrBTGV', 'store');
- ```
- - If you are on CS50 IDE using email-id of SID 885 (username : avravikiran) than
- ```
-    //connecting to database
-    $link = mysqli_connect('localhost', 'avravikiran', 'v1kCjsvLYytrBTGV', 'store');
- ```
- 
- So change the username depending upon the user_id.
-
-<br/>
-
-## Starting the server
-- To start the server type the following command
-  - If you are logged in with email-id of **SID 67** (username : adarsh_jain) then use the following commands-
-  ```
-      apache50 start ~/workspace/Online\ Store/public/
-      mysql50 start
-  ```
-  - If you are logged in with email-id of **SID 885** (username : avravikiran) then use the following commands-
-  ```
-      apache50 start ~/sopho-project2/public
-      mysql50 start
-  ```
-  
-- Than click on the ***webserver*** option in drop-down list of **CS50 IDE** on top-left menu.
-
-<br/>
-
 ## Navigating the website
 
 ### Login page
