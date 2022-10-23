@@ -1,14 +1,6 @@
 # ExSell
 
-DOCUMENTATION For ExSell ( Project 2 ) **Online Marketplace for College Students.**
-
-> Developed By
->
-> ***Adarsh Kumar Jain*** ( SID 65 )
->
-> ***Ravi Kiran Attili*** ( SID 885 )
->
-> (Under guidance of **SophomoreS.in**)
+DOCUMENTATION For ExSell **Online Marketplace for College Students.**
 
 <br/>
 
