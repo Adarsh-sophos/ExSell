@@ -1,4 +1,5 @@
 <?php
+    // functionality for logout
 
     // configuration
     require("../controllers/config.php");
