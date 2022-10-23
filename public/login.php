@@ -1,5 +1,7 @@
 <?php
 
+    //Logic for login functionality
+
     // configuration
     require("../controllers/config.php");
 
